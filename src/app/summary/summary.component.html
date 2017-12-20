@@ -1,0 +1,42 @@
+<div class="container col-md-6 col-md-offset-1">
+  <h3>Welcome,{{ username }}</h3>
+  <div class="container">
+    <table id="debit_table" class="table table-striped table-hover">
+      <tr>
+        <th>Deposit Account</th>
+        <th>Current Balance</th>
+        <th>Available Balance</th>
+      </tr>
+      <tr *ngFor="let acc of deposit_account">
+        <td></td>
+        <td>{{ acc.current_balance | currency:'CAD':'symbol-narrow':'0.2-2' }}</td>
+        <td>{{ (acc.current_balance + acc.over_draft - acc.on_hold) | currency:'CAD':'symbol-narrow':'0.2-2' }}</td>
+        <!-- built in currency pipes -->
+      </tr>
+      <tr>
+        <th>Subtotal</th>
+        <th>{{ sums.sum_current_balance | currency:'CAD':'symbol-narrow':'0.2-2'}}</th>
+        <th>{{ sums.sum_available_balance | currency:'CAD':'symbol-narrow':'0.2-2' }}</th>
+      </tr>
+    </table>
+  </div>
+  <div class="container">
+    <table id="credit_table" class="table table-striped table-hover">
+      <tr>
+        <th>Loan Account</th>
+        <th>Current Credit Balance</th>
+        <th>Available Credit</th>
+      </tr>
+      <tr *ngFor="let acc of loan_account">
+        <td></td>
+        <td>{{ acc.current_balance | currency:'CAD':'symbol-narrow':'0.2-2' }}</td>
+        <td>{{ (acc.credit_limit - acc.current_balance) | currency:'CAD':'symbol-narrow':'0.2-2' }}</td>
+      </tr>
+      <tr>
+        <th>Subtotal</th>
+        <th>{{ sums.sum_current_credit_balance | currency:'CAD':'symbol-narrow':'0.2-2'}}</th>
+        <th>{{ sums.sum_current_credit_limit | currency:'CAD':'symbol-narrow':'0.2-2' }}</th>
+      </tr>
+    </table>
+  </div>
+</div>

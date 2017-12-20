@@ -1,0 +1,21 @@
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+}
+
+.container {
+    margin-top: 2em;
+}
+
+legend{
+    font-size:12px;
+    border-bottom: 0px;
+    margin-bottom: 1px;
+}
+
+#submitBtn{
+    margin-top:20px;
+}

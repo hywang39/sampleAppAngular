@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="col-md-4 col-md-offset-3">
+    <!--  <form (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate> -->
+    <form #loginForm="ngForm">
+      <label>ID Field</label>
+      <div class="form-group input-icon">
+        <input type="text" class="form-control" name="nameID" [(ngModel)]="username" required>
+        <div *ngIf="!hide_validation">
+          <div class="alert-danger">
+            <div *ngIf="!user_length">
+              <p>user name is between 8 and 20 characters</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <label>Password</label>
+      <div class="form-group input-icon">
+        <input type="text" class="form-control" name="password" [(ngModel)]="password" required>
+        <div *ngIf="!hide_validation">
+          <div class="alert-danger">
+            <div *ngIf="!length">
+              <p>password is between 10 and 20 characters</p>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!hide_validation">
+          <div class="alert-danger">
+            <div *ngIf="!capital">
+              <p>At least one capital letter</p>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="!hide_validation">
+
+          <div class="alert-danger">
+            <div *ngIf="!lowercase">
+              <p>At least one lower case letter</p>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="!hide_validation">
+
+          <div class="alert-danger">
+            <div *ngIf="!SpecialChar">
+              <p>At least one SpecialChar in %#*!@&</p>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="!hide_validation">
+          <div class="alert-danger">
+            <div *ngIf="!NoMoreThanThreeConsecutiveLetters">
+              <p>No more than 3 consecutive letters</p>
+            </div>
+          </div>
+        </div>
+        <button id="submitBtn" class="btn btn-default" [disabled]="!loginForm.form.valid" (click)="login()">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
